@@ -1,0 +1,26 @@
+local model = script.Parent
+local fadeDuration = 3 -- Doba trvání efektu v sekundách
+
+while true do
+	for transparency = 0, 1, 0.01 do
+		for _, part in pairs(model:GetDescendants()) do
+			if part:IsA("BasePart") then
+				part.Transparency = transparency
+			end
+		end
+		wait(fadeDuration / 100)
+	end
+
+	wait(1) -- počká 1 sekundu, než se bloky stane zcela průhlednými
+
+	for transparency = 1, 0, -0.01 do
+		for _, part in pairs(model:GetDescendants()) do
+			if part:IsA("BasePart") then
+				part.Transparency = transparency
+			end
+		end
+		wait(fadeDuration / 100)
+	end
+
+	wait(1) -- počká 1 sekundu, než se bloky zase stanou neprůhlednými
+end
